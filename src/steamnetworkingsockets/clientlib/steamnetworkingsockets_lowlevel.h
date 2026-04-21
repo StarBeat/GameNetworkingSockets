@@ -605,13 +605,13 @@ struct ShortDurationLock : Lock<ShortDurationMutexImpl>
 using ShortDurationScopeLock = ScopeLock<ShortDurationLock>;
 
 #if STEAMNETWORKINGSOCKETS_LOCK_DEBUG_LEVEL > 0
-	#define AssertHeldByCurrentThread( ... ) _AssertHeldByCurrentThread( __FILE__, __LINE__ ,## __VA_ARGS__ )
-	#define AssertLocksHeldByCurrentThread( ... ) _AssertLocksHeldByCurrentThread( __FILE__, __LINE__,## __VA_ARGS__ )
-	#define TakeLockOwnership( pLock, ... ) _TakeLockOwnership( (pLock), __FILE__, __LINE__,## __VA_ARGS__ )
+	#define AssertHeldByCurrentThread( ... ) _AssertHeldByCurrentThread( __FILE__, __LINE__ , ##__VA_ARGS__ )
+	#define AssertLocksHeldByCurrentThread( ... ) _AssertLocksHeldByCurrentThread( __FILE__, __LINE__ , ##__VA_ARGS__ )
+	#define TakeLockOwnership( pLock, ... ) _TakeLockOwnership( (pLock), __FILE__, __LINE__ , ##__VA_ARGS__ )
 #else
-	#define AssertHeldByCurrentThread( ... ) _AssertHeldByCurrentThread( nullptr, 0,## __VA_ARGS__ )
-	#define AssertLocksHeldByCurrentThread( ... ) _AssertLocksHeldByCurrentThread( nullptr, 0,## __VA_ARGS__ )
-	#define TakeLockOwnership( pLock, ... ) _TakeLockOwnership( (pLock), nullptr, 0,## __VA_ARGS__ )
+	#define AssertHeldByCurrentThread( ... ) _AssertHeldByCurrentThread( nullptr, 0 , ##__VA_ARGS__ )
+	#define AssertLocksHeldByCurrentThread( ... ) _AssertLocksHeldByCurrentThread( nullptr, 0 , ##__VA_ARGS__ )
+	#define TakeLockOwnership( pLock, ... ) _TakeLockOwnership( (pLock), nullptr, 0 , ##__VA_ARGS__ )
 #endif
 
 /// Special utilities for acquiring the global lock
